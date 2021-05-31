@@ -15,16 +15,15 @@ module RubyLoversShopTomasz31052021FullTomasz
 
     config.generators do |g|
       g.test_framework :rspec
-      #fixture: false
+      # fixture: false
       g.view_specs false
-      #g.helper_specs false
-      #g.controller_specs false
+      # g.helper_specs false
+      # g.controller_specs false
       g.routing_specs false
-      #g.stylesheets = false
-      #g.javascripts = false
+      # g.stylesheets = false
+      # g.javascripts = false
       g.helper = false
     end
-
 
     # Configuration for the application, engines, and railties goes here.
     #
