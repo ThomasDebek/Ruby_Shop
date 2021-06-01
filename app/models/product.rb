@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   has_one_attached :main_image
   belongs_to :category
+  belongs_to :brand
 
   scope :filter_by_category, -> (category_id) { where category_id: category_id }
 
