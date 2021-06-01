@@ -45,5 +45,5 @@ RSpec.describe Product, type: :model do
       expect(product.errors[:name]).to include("can't be blank")
     end
   end
-  
+
 end
