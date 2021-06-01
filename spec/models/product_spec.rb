@@ -35,4 +35,15 @@ RSpec.describe Product, type: :model do
       expect(product.errors[:price]).to eql(['must be greater than or equal to 0.01'])
     end
   end
+
+  describe "Categories and Price" do
+    it 'is invalid without name a product ' do
+      category = FactoryBot.build(:category)
+      category.save
+      product = category.products.create(name: nil)
+      product.valid?
+      expect(product.errors[:name]).to include("can't be blank")
+    end
+  end
+  
 end
