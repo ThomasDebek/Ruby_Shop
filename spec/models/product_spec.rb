@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-
   it 'is valid Factory' do
     product = FactoryBot.build(:product)
     product.valid?
@@ -33,6 +34,5 @@ RSpec.describe Product, type: :model do
       product.invalid?
       expect(product.errors[:price]).to eql(['must be greater than or equal to 0.01'])
     end
-
   end
 end
