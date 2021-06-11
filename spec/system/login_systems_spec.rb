@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "LoginSystems", type: :system do
-  before do
-    driven_by(:rack_test)
+  context 'when no visiting the Home Page'  do
+    it 'Log In button is visible ' do
+      visit "/"
+      expect(page).to have_link('Log In')
+    end
   end
-
-  pending "add some scenarios (or delete) #{__FILE__}"
 end
