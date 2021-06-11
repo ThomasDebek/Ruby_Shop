@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "SignupSystems", type: :system do
+RSpec.describe 'Sign Up System', type: :system do
+
   context 'when providing valide details' do
     it 'allows user to create account' do
       visit '/'
