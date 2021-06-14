@@ -12,6 +12,15 @@ RSpec.describe 'Login Systems', type: :system do
       find('input[name="commit"]').click
       expect(page).to have_content('Signed in successfully')
     end
+
+    it 'user can reset password' do
+      visit '/'
+      click_on('Log In')
+      click_on('Forgot Password?')
+      fill_in 'user_email', with: user.email
+      find('input[name="commit"]').click
+      expect(page).to have_content('You will receive an email with instructions on how to reset your password in a few minutes.')
+    end
   end
 
   context 'when providing invalid details' do
@@ -31,6 +40,15 @@ RSpec.describe 'Login Systems', type: :system do
       fill_in 'user_password', with: user.password
       find('input[name="commit"]').click
       expect(page).to have_content('Invalid Email or password')
+    end
+
+    it 'user cannot reset password' do
+      visit '/'
+      click_on('Log In')
+      click_on('Forgot Password?')
+      fill_in 'user_email', with: 'fake_email@example.com'
+      find('input[name="commit"]').click
+      expect(page).to have_content('Email not found')
     end
 
   end
