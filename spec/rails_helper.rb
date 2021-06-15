@@ -75,8 +75,8 @@ RSpec.configure do |config|
   end
 
   def login_administrator(administrator)
-    post administration_session_path, params: {
-      admin: {
+    post administrator_session_path, params: {
+      administrator: {
         email: administrator.email,
         password: administrator.password
       }
