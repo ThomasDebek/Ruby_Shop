@@ -33,6 +33,6 @@ RSpec.describe Product, type: :model do
       product.invalid?
       expect(product.errors[:price]).to eql(['must be greater than or equal to 0.01'])
     end
-    
+
   end
 end
