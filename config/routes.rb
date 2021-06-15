@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :administrator do
-    resources :products 
+    resources :products
     root 'products#index'
   end
 
