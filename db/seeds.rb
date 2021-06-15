@@ -10,10 +10,23 @@
 
 require 'faker'
 
+Category.destroy_all
+4.times do
+  Category.create(
+    name: Faker::Commerce.department(max: 1)
+  )
+end
+
+categories = Category.all
+
 Product.delete_all
 10.times do
   Product.create!(
     name: Faker::Game.title,
-    price: Faker::Commerce.price
+    price: Faker::Commerce.price,
+    category: categories[rand(4)]
   )
 end
+
+
+
