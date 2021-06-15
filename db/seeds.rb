@@ -10,6 +10,13 @@
 
 require 'faker'
 
+Brand.destroy_all
+4.times do
+  Brand.create(
+    name: Faker::Device.manufacturer
+  )
+end
+
 Category.destroy_all
 4.times do
   Category.create(
@@ -18,13 +25,15 @@ Category.destroy_all
 end
 
 categories = Category.all
+brands = Brand.all
 
 Product.delete_all
 10.times do
   Product.create!(
     name: Faker::Game.title,
     price: Faker::Commerce.price,
-    category: categories[rand(4)]
+    category: categories[rand(4)],
+    brand: brands[rand(4)]
   )
 end
 
