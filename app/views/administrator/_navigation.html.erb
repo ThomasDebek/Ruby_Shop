@@ -1,12 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary mb-3">
   <div class="container">
-    <a class="navbar-brand" href="#">Ruby Lovers Admin Panel</a>
+    <a class="navbar-brand" href="#">Ruby Lovers Administrator Panel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item px-1">
+          <%= link_to 'Products', administrator_products_path, class:"nav-link btn btn-outline-dark btn-inverse" %>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
