@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,6 +12,18 @@ module RubyLoversShopTomasz31052021FullTomasz
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+
+    config.generators do |g|
+      g.test_framework :rspec
+      # fixture: false
+      g.view_specs false
+      # g.helper_specs false
+      # g.controller_specs false
+      g.routing_specs false
+      # g.stylesheets = false
+      # g.javascripts = false
+      g.helper = false
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
