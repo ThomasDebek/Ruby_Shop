@@ -9,6 +9,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+Administrator.destroy_all
+
+Administrator.create(
+  email: "admin@admin.com",
+  password: "password"
+)
 
 User.destroy_all
 
