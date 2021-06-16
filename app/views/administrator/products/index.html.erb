@@ -17,7 +17,7 @@
     <tr>
       <th scope="row" class="product-name"><%= product.name %></th>
       <td><%= product.price %></td>
-      <td><%= product.category.nil? ? '' : product.category.name unless product.category %></td>
+      <td><%= product.category.nil? ? '' : product.category.name %></td>
       <td><%= product.brand.nil? ? '' : product.brand.name %></td>
     </tr>
   <% end %>
