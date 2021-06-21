@@ -23,12 +23,12 @@
 
     <div class="form-group row">
       <label for="product_category_id" class="col-3 col-form-label">Category</label>
-      <%= f.collection_select(:category_id, Category.all, :id, :name,{ :include_blank => true }, { class: "form-control col-9" }) %>
+      <%= f.collection_select(:category_id, CategoryPresenter.select_params, :id, :name,{ :include_blank => true }, { class: "form-control col-9" }) %>
     </div></br>
 
     <div class="form-group row">
       <label for="product_brand_id" class="col-3 col-form-label">Brand</label>
-      <%= f.collection_select(:brand_id, Brand.all, :id, :name, { :include_blank => true }, { class: "form-control col-9" }) %>
+      <%= f.collection_select(:brand_id, BrandPresenter.select_params, :id, :name, { :include_blank => true }, { class: "form-control col-9" }) %>
     </div></br>
 
     <div class="form-group row">
