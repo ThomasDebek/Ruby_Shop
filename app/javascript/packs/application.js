@@ -11,3 +11,13 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import "bootstrap"
+import "../stylesheets/application"
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+document.addEventListener("turbolinks:load", () => {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="popover"]').popover()
+})

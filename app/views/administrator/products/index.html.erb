@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between mb-3">
+  <h2>Products</h2>
+  <%= link_to "Add Product", new_administrator_product_path, class: "btn btn-dark"%>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Price</th>
+    <th scope="col">Category</th>
+    <th scope="col">Brand</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <th scope="row" class="product-name"><%= product.name %></th>
+      <td><%= product.price %></td>
+      <td><%= product.category.nil? ? '' : product.category.name %></td>
+      <td><%= product.brand.nil? ? '' : product.brand.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
