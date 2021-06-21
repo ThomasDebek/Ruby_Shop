@@ -10,6 +10,7 @@
 .DS_Store
 .idea.workspace.xml
 
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
