@@ -14,7 +14,8 @@
     "react-popper": "^2.2.5",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "yarn-audit-fix": "^6.3.2"
   },
   "version": "0.1.0",
   "devDependencies": {
