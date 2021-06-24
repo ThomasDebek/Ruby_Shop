@@ -26,7 +26,7 @@ class Administrator::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_products_path, notice: 'Product edited successfully'
+      redirect_to administrator_products_path, notice: 'Product edited successfully'
     else
       render :edit
     end
