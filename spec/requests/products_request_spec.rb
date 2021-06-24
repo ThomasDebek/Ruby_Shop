@@ -1,35 +1,29 @@
 require 'rails_helper'
 
-RSpec.describe 'POST /administrator/products', type: :request do
+RSpec.describe 'Products', type: :request do
   before do
     login_as(create(:administrator))
   end
 
-  context 'when attributes are valid' do
-    it 'creates new product' do
-      post '/administrator/products', params: {
-        product: { name: 'new_product', price: '100' }
-      }
+  describe 'POST /administrator/products' do
+    let(:product) { create(:product) }
 
-      expect(Product.count).to eq(Product.count)
+    context 'when attributes are valid' do
+      before do
+        post '/administrator/products', params: {
+          product: { name: product.name, price: product.price }
+        }
+      end
+
+      it 'redirects to administrator/products' do
+        expect(response).to redirect_to(administrator_products_path)
+      end
+
+      it 'adds new product' do
+        follow_redirect!
+        expect(response.body).to include(product.name)
+      end
     end
   end
 
-  context 'when attributes are invalid' do
-    it 'does not create a new product without a name' do
-      post '/administrator/products', params: {
-        product: {name: nil,  price: '100' }
-      }
-
-      expect(Product.count).to eq(Product.count )
-    end
-
-    it 'does not create a new product without a price' do
-      post '/administrator/products', params: {
-        product: { name: 'new_product', price: nil }
-      }
-
-      expect(Product.count).to eq(Product.count)
-    end
-  end
 end
