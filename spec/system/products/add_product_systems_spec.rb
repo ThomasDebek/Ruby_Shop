@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Adding Product', type: :system do
@@ -51,7 +53,7 @@ RSpec.describe 'Adding Product', type: :system do
       end
     end
 
-    context 'with missing name'  do
+    context 'with missing name' do
       let(:product_price) { 1 }
       before  do
         find('#add-product-button').click
@@ -67,10 +69,8 @@ RSpec.describe 'Adding Product', type: :system do
         visit '/'
         expect(page).to have_no_content 'Price can\'t be blank'
       end
-
     end
   end
-
 
   context 'when logged in as user' do
     before do
@@ -100,5 +100,4 @@ RSpec.describe 'Adding Product', type: :system do
       expect(page).to have_content('You are not authorized.')
     end
   end
-
 end

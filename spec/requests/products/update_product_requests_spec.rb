@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'PATH /administrator/products/:id', type: :request do
@@ -63,10 +65,10 @@ RSpec.describe 'PATH /administrator/products/:id', type: :request do
     end
   end
 
-  context 'when not logged in'  do
-    context 'with valid parmaeters'  do
+  context 'when not logged in' do
+    context 'with valid parmaeters' do
       before  do
-        patch administrator_product_url(product), params: { product: {name:new_name, price:new_price }}
+        patch administrator_product_url(product), params: { product: { name: new_name, price: new_price } }
       end
 
       it 'does not update product\s name' do
@@ -80,5 +82,4 @@ RSpec.describe 'PATH /administrator/products/:id', type: :request do
       end
     end
   end
-
 end

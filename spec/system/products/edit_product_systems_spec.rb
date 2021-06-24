@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Editing Product', type: :system do
-  context 'when logged in as adminstrator'  do
-    let!(:administrator) {create(:administrator)}
-    let!(:product) {create(:product)}
+  context 'when logged in as adminstrator' do
+    let!(:administrator) { create(:administrator) }
+    let!(:product) { create(:product) }
 
     before do
       login_as(administrator, scope: :administrator)
       visit administrator_products_path
     end
 
-    context 'when editing product with valid attributes'  do
+    context 'when editing product with valid attributes' do
       let(:new_name) { 'new_product_name' }
 
       before do
@@ -73,6 +75,5 @@ RSpec.describe 'Editing Product', type: :system do
         expect(page).to have_no_content product_price
       end
     end
-
   end
 end

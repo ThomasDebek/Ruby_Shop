@@ -13,9 +13,7 @@ RSpec.describe 'HomePages', type: :system do
   let!(:product_2_1)  { create(:product, name: 'product_2_1', category: category_2, brand: brand_1) }
   let!(:product_2_2)  { create(:product, name: 'product_2_2', category: category_2, brand: brand_2) }
 
-
   context 'when only Category filter is applied' do
-
     it 'displays only Products from chosen Category' do
       visit '/'
       click_on 'category_1'
@@ -47,6 +45,4 @@ RSpec.describe 'HomePages', type: :system do
       assert_selector 'h4.card-title', count: 2
     end
   end
-
-
 end

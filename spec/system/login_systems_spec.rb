@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Login Systems', type: :system do
   let(:user) { create(:user) }
 
   context 'when providing valid details' do
-
     before do
       visit '/'
       click_on 'Log In'
@@ -22,11 +23,10 @@ RSpec.describe 'Login Systems', type: :system do
     #  fill_in 'user_email', with: user.email
     #  find('input[name="commit"]').click
     #  expect(page).to have_content('You will receive an email with instructions on how to reset your password in a few minutes.')
-    #end
+    # end
   end
 
   context 'when providing invalid details' do
-
     before do
       visit '/'
       click_on 'Log In'
