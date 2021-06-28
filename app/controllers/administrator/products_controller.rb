@@ -38,7 +38,7 @@ module Administrator
     def destroy
       @product = Product.find(params[:id])
       @product.destroy
-      redirect_to administrator_products_path, notice: 'Product deleted successfully'
+      redirect_to administrator_products_path, notice:  'Product deleted successfully'
     end
 
     private
