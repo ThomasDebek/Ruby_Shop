@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Administrator::ProductsController < ApplicationController
   layout 'administrator'
   before_action :authenticate_administrator!
@@ -32,10 +34,16 @@ class Administrator::ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to administrator_products_path, notice: 'Product deleted successfully'
+  end
+
   private
 
   def product_params
     params.require(:product).permit(:name, :price, :category_id, :brand_id, :main_image)
   end
-
 end
+

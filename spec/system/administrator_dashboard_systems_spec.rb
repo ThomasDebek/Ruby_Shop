@@ -1,51 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "AdministratorDashboardSystems", type: :system do
+RSpec.describe 'Visiting Admin Dashboard', type: :system do
   let!(:user) { create(:user) }
   let!(:administrator) { create(:administrator) }
-
-  context 'when not logged in' do
-    before do
-      visit 'administrator'
-    end
-
-    it 'redirects to root path' do
-      expect(page).to have_current_path(root_path)
-    end
-
-    it 'displays unauthorized warning' do
-      expect(page).to have_content("You are not authorized")
-    end
-  end
-
-  context 'when logged in as user' do
-    before do
-      visit '/'
-      click_on 'Log In'
-      fill_in 'user_email', with: user.email
-      fill_in 'user_password', with: user.password
-      find('input[name="commit"]').click
-      visit 'administrator'
-    end
-
-    it 'redirects to root path' do
-      expect(page).to have_current_path(root_path)
-    end
-
-    it 'displays unauthorized warning' do
-      expect(page).to have_content('You are not authorized')
-    end
-  end
+  let!(:product1)  { create(:product, name: 'product1') }
+  let!(:product2)  { create(:product, name: 'product2') }
 
   context 'when logged in as administrator' do
-    let!(:product_1)  { create(:product, name: 'product_1') }
-    let!(:product_2)  { create(:product, name: 'product_2') }
-
     before do
-      visit '/administrators/sign_in'
-      fill_in 'administrator_email', with: administrator.email
-      fill_in 'administrator_password', with: administrator.password
-      find('input[name="commit"]').click
+      login_as(administrator, scope: :administrator)
       visit '/administrator'
     end
 
@@ -53,10 +18,38 @@ RSpec.describe "AdministratorDashboardSystems", type: :system do
       expect(page).to have_current_path('/administrator')
     end
 
-    it 'displays all products in the admin dashboard' do
+    it 'displays all products in the administrator dashboard' do
       click_on('Products')
-      expect(page).to have_css('.product-name', text: product_1.name)
-      expect(page).to have_css('.product-name', text: product_2.name)
+      expect(page).to have_css('.product-name', text: product1.name).and  have_css('.product-name', text: product2.name)
+    end
+  end
+
+  context 'when logged in as user' do
+    before do
+      login_as(user, scope: :user)
+      visit '/administrator'
+    end
+
+    it 'redirects to root path' do
+      expect(page).to have_current_path(root_path)
+    end
+
+    it 'displays unauthorized warning' do
+      expect(page).to have_content('You are not authorized.')
+    end
+  end
+
+  context 'when not logged in' do
+    before do
+      visit '/administrator'
+    end
+
+    it 'redirects to root path' do
+      expect(page).to have_current_path(root_path)
+    end
+
+    it 'displays unauthorized warning' do
+      expect(page).to have_content('You are not authorized.')
     end
   end
 end

@@ -12,17 +12,16 @@ require 'faker'
 Administrator.destroy_all
 
 Administrator.create(
-  email: "admin@admin.com",
-  password: "password"
+  email: 'admin@admin.com',
+  password: 'password'
 )
 
 User.destroy_all
 
 User.create(
-  email: "john@example.com",
-  password: "password"
+  email: 'john@example.com',
+  password: 'password'
 )
-
 
 Brand.destroy_all
 4.times do
@@ -50,6 +49,3 @@ Product.delete_all
     brand: brands[rand(4)]
   )
 end
-
-
-

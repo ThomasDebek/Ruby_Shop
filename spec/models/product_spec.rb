@@ -36,7 +36,7 @@ RSpec.describe Product, type: :model do
     end
   end
 
-  describe "Categories and Price" do
+  describe 'Categories and Price' do
     it 'is invalid without name a product ' do
       category = FactoryBot.build(:category)
       category.save
@@ -45,5 +45,4 @@ RSpec.describe Product, type: :model do
       expect(product.errors[:name]).to include("can't be blank")
     end
   end
-
 end
