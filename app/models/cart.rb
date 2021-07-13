@@ -4,6 +4,12 @@ class Cart < ApplicationRecord
 
   def total
     cart_items.inject(0) { |sum, item| item.total_price + sum}
+
+    # cart_items.each do |cart_item|
+    # sum = 0
+    # sum += cart_item.total_price
+    # end
+    # sum
   end
 
   def add_product(product)
