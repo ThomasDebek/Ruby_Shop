@@ -16,6 +16,7 @@ gem 'sass-rails', '>= 6'
 gem 'spring'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem 'aws-sdk-s3', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

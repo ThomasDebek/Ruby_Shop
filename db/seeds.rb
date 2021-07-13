@@ -1,28 +1,13 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
 Administrator.destroy_all
-
-Administrator.create(
-  email: 'admin@admin.com',
-  password: 'password'
-)
-
 User.destroy_all
 
-User.create(
-  email: 'john@example.com',
-  password: 'password'
-)
+Administrator.create_with(password: 'password').find_or_create_by(email: 'admin@admin.com')
+User.create_with(password: 'password').find_or_create_by(email: 'john@example.com')
 
+puts 'Generating Brand'
 Brand.destroy_all
 4.times do
   Brand.create(
@@ -30,6 +15,7 @@ Brand.destroy_all
   )
 end
 
+puts 'Generating Categories'
 Category.destroy_all
 4.times do
   Category.create(
@@ -41,11 +27,14 @@ categories = Category.all
 brands = Brand.all
 
 Product.delete_all
-10.times do
-  Product.create!(
-    name: Faker::Game.title,
-    price: Faker::Commerce.price,
+15.times do
+  p = Product.create!(
+    name: Faker::Commerce.unique.product_name,
+    price: Faker::Number.decimal(l_digits: 2),
     category: categories[rand(4)],
     brand: brands[rand(4)]
   )
+  puts "generating - product - #{p.name}"
+  downloaded_image = URI.open("https://source.unsplash.com/700x400/?#{p.name.split.last}")
+  p.main_image.attach(io: downloaded_image, filename: "mi_#{p.id}.png")
 end
