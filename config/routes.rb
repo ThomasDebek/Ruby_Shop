@@ -6,11 +6,17 @@ Rails.application.routes.draw do
   devise_for :administrators
   devise_for :users
 
-  resources :products, only: %i[show]
-
-
   namespace :administrator do
     resources :products
     root 'products#index'
   end
+
+  resources :products, only: %i[show]
+
+  resources :carts, only: %i[show create destroy]
+  get    'cart', to: 'carts#show'
+  delete 'cart', to: 'carts#destroy'
+  post   'cart', to: 'carts#add', as: 'add_to_cart'
+
+
 end
