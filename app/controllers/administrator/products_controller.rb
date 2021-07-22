@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-class Administrator::ProductsController < ApplicationController
-  layout 'administrator'
-  before_action :authenticate_administrator!
-
+class Administrator::ProductsController < AdministratorController
   def index
-    @products = Product.includes([:category]).includes([:brand]).all
+    @products = Product.includes(:category, :brand).all
   end
 
   def new

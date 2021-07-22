@@ -1,21 +1,26 @@
 class CartsController < ApplicationController
-  before_action :initialize_cart
+  before_action :authenticate_user!
 
   def show
-    @cart = Cart.find(params[:id])
+    @cart_items = @cart.cart_items.includes(:product, product: { main_image_attachment: :blob })
   end
 
   def add
-    product = Product.find(params[:product_id])
-    item_added = @cart.add_product(product)
+    result = AddProductToCart.new.call(product_id: params[:product_id], cart: @cart)
 
-    if item_added.nil?
-      flash[:notice] = "#{product.name} is already in the cart"
+    if result.success?
+      flash[:notice] = result.value!
+      redirect_to root_path
     else
-      item_added.save
-      flash[:notice] = "Added #{product.name} to cart"
+      flash[:notice] = result.failure
+      redirect_to root_path
     end
-    redirect_back(fallback_location: root_path)
   end
 
+  def destroy
+    @cart.destroy
+    session[:cart_id] = nil
+    flash[:notice] = 'Cart has been emptied'
+    redirect_to root_path
+  end
 end

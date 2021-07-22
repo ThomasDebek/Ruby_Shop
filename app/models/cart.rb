@@ -12,9 +12,5 @@ class Cart < ApplicationRecord
     # sum
   end
 
-  def add_product(product)
-    current_item = cart_items.find_by(product_id: product.id)
-    cart_items.build(product_id: product.id) unless current_item
-  end
-
+  delegate :empty?, to: :cart_items
 end
