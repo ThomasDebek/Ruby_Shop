@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Administrator::ProductsController < AdministratorController
+class Administrator::ProductsController < ApplicationController
+  layout 'administrator'
   def index
     @products = Product.includes(:category, :brand).all
   end
