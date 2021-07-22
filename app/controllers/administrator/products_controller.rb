@@ -4,6 +4,8 @@ class Administrator::ProductsController < ApplicationController
   layout 'administrator'
   def index
     @products = Product.includes(:category, :brand).all
+    @products = @products.filter_by_category(params[:category]) if params[:category].present?
+    @products = @products.filter_by_brand(params[:brand]) if params[:brand].present?
   end
 
   def new
