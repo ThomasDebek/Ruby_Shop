@@ -17,6 +17,11 @@
 	    <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item active px-1">
+            <%= link_to 'Cart', cart_path(@cart), class:"nav-link btn btn-outline-secondary btn-inverse" %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li class="nav-item active px-1">
             <%= link_to 'Edit profile', edit_user_registration_path, class:"nav-link btn btn-outline-secondary btn-inverse"  %>
           </li>
           <li class="nav-item active px-1">

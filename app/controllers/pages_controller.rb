@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  before_action :initialize_cart
+
   def home
     @products = Product.all.with_attached_main_image
     @products = @products.filter_by_category(params[:category]) if params[:category].present?
