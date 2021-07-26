@@ -6,6 +6,7 @@
 <table class="table">
   <thead class="thead">
   <tr>
+    <th scope="col">Img</th>
     <th scope="col">Name</th>
     <th scope="col">Price</th>
     <th scope="col">Category</th>
@@ -15,6 +16,7 @@
   <tbody>
   <% @products.each do |product| %>
     <tr>
+      <td><%= image_tag(product.main_image_path, width: "50x50", class: "mx-auto") %></td>
       <th scope="row" class="product-name"><%= product.name %></th>
       <td><%= product.price %></td>
       <td><%= product.category.nil? ? '' : product.category.name %></td>
