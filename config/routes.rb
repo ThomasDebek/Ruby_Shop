@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :products, only: %i[show]
   resources :orders, only: %i[create]
 
-  resources :carts, only: %i[show create destroy]
+  #resources :carts, only: %i[show create destroy]
 
   get    'cart', to: 'carts#show'
   delete 'cart', to: 'carts#destroy'
