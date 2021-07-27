@@ -13,7 +13,7 @@ RSpec.describe 'Cart - Checkout', type: :system do
     context 'with product in the cart' do
       before do
         visit '/'
-        click_button 'Add to Cart'
+        click_button('Add to Cart')
         click_link('Cart', exact: true)
         click_link('Checkout', exact: true)
       end
