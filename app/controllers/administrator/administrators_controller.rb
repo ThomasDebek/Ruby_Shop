@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class Administrator::AdministratorsController < ApplicationController
+  layout 'administrator'
   before_action :administrator_authentication
-
-  layout 'admin'
 
   def administrator_authentication
     unless administrator_signed_in?

@@ -12,7 +12,7 @@ class CartsController < ApplicationController
       flash[:notice] = result.value!
       redirect_to root_path
     else
-      flash[:notice] = result.failure
+      flash[:alert] = result.failure
       redirect_to root_path
     end
   end
