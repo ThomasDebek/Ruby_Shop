@@ -1,26 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-  <div class="container">
-    <a class="navbar-brand" href="#">Ruby Lovers Administrator Panel</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Ruby Lovers Admin Panel</a>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <% if administrator_signed_in? %>
         <li class="nav-item px-1">
-          <%= link_to 'Products', administrator_products_path, class:"nav-link btn btn-outline-dark btn-inverse" %>
-        </li>
-        <li class="nav-item px-1">
-          <%= link_to 'Orders', administrator_orders_path, class:"nav-link btn btn-outline-dark btn-inverse" %>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <% if administrator_signed_in? %>
+          <a class="nav-link">
             <span class="navbar-text">Logged in as: <%= current_administrator.email %></span>
-          <li class="nav-item active px-1">
-            <%= link_to 'Log Out', destroy_administrator_session_path, method: :delete, class:"nav-link btn btn-outline-dark btn-inverse" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+          </a>
+        </li>
+        <li class="nav-item active px-1">
+          <%= link_to 'Log Out', destroy_administrator_session_path, method: :delete,
+                      class:"nav-link btn btn-outline-secondary btn-inverse" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </nav>
+

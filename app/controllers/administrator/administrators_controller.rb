@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Administrator::AdministratorsController < ApplicationController
+
+
   layout 'administrator'
   before_action :administrator_authentication
 

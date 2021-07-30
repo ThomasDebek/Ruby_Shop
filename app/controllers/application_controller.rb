@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::Base
   before_action :initialize_cart
+  include Pagy::Backend
+
 
   def initialize_cart
     if session[:cart_id]

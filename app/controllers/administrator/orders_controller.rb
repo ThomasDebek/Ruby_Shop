@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Administrator::OrdersController < ApplicationController
+  layout 'administrator'
   def index
-    @orders = Order.order(created_at: :asc)
+    @pagy, @orders = pagy(Order.order(created_at: :asc))
   end
 end
 

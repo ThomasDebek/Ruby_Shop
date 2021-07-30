@@ -34,7 +34,7 @@ categories = Category.all
 brands = Brand.all
 
 Product.delete_all
-15.times do
+20.times do
   p = Product.create!(
     name: Faker::Commerce.unique.product_name,
     price: Faker::Number.decimal(l_digits: 2),

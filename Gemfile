@@ -13,11 +13,12 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'sass-rails', '>= 6'
-gem 'spring'
+#gem 'spring'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 gem 'aws-sdk-s3', require: false
 gem 'dry-monads'
+gem 'pagy', '~> 3.0.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
