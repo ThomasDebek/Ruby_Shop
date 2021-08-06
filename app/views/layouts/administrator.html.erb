@@ -1,41 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RubyLoversShopTomasz</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ruby Lovers Shop</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application' %>
+  <%= javascript_pack_tag 'application' %>
 </head>
-
 <body>
 <%= render 'administrator/navigation' %>
 <%= render 'flash_messages' %>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-9">
-      <%= yield %>
-    </div>
-
-    <div class="col-lg-3">
-      <h4 class="my-4">Categories</h4>
-      <div class="list-group">
-        <% Category.all.each do |category| %>
-          <%= link_to category.name, administrator_root_path(category: category.id), class: "list-group-item" %>
-        <% end %>
-      </div>
-
-      <h4 class="my-4">Brands</h4>
-      <div class="list-group">
-        <% Brand.all.each do |brand| %>
-          <%= link_to brand.name, administrator_root_path(brand: brand.id), class: "list-group-item" %>
-        <% end %>
+  <div class="container-fluid d-flex flex-column">
+    <div class="row" style="height:100vh">
+      <%= render 'administrator/sidebar' %>
+      <div class="col-md-10 pt-3 px-4">
+        <%= yield %>
       </div>
     </div>
   </div>
-</div>
 </body>
+
 </html>

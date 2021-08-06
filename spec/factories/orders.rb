@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :order do
-    user { nil }
+    state { :new }
+    user
   end
 end

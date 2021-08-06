@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Administrator::ProductsController < ApplicationController
+  include Pagy::Frontend
   layout 'administrator'
   def index
-    @products = Product.includes(:category, :brand).all
+    @pagy, @products = pagy(Product.includes(:category, :brand).all)
     @products = @products.filter_by_category(params[:category]) if params[:category].present?
     @products = @products.filter_by_brand(params[:brand]) if params[:brand].present?
   end
