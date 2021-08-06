@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   validates :name, :price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   has_one_attached :main_image
+  has_many :order_items, dependent: :destroy
   belongs_to :category, optional: true
   belongs_to :brand, optional: true
 
