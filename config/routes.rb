@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :administrator do
     resources :products
-    resources :orders, only: %i[index]
+    resources :orders, only: %i[index show]
     root 'products#index'
   end
 
