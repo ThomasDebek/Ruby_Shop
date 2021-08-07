@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../shared/request_for_administrators_only'
 
 RSpec.describe 'GET /orders/:id', type: :request do
   let!(:order) { create(:order) }
@@ -19,36 +20,7 @@ RSpec.describe 'GET /orders/:id', type: :request do
     end
   end
 
-  context 'when logged in as User' do
-    let!(:user) { create(:user) }
-
-    before do
-      login_as(user, scope: :user)
-      get "/administrator/orders/#{order.id}"
-    end
-
-    it 'redirects to root path' do
-      expect(response).to redirect_to(root_path)
-    end
-
-    it 'informs about lack of authorization' do
-      follow_redirect!
-      expect(response.body).to include('You are not authorized.')
-    end
-  end
-
-  context 'when not logged in' do
-    before do
-      get "/administrator/orders/#{order.id}"
-    end
-
-    it 'redirects to root path' do
-      expect(response).to redirect_to(root_path)
-    end
-
-    it 'informs about lack of authorization' do
-      follow_redirect!
-      expect(response.body).to include('You are not authorized.')
-    end
+  it_behaves_like 'request for administrators only' do
+    let(:path) { "/administrator/orders/#{order.id}" }
   end
 end

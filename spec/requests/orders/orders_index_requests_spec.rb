@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-#require_relative '../shared/request_for_administrators_only'
+require_relative '../shared/request_for_administrators_only'
 
 RSpec.describe 'GET /administrator/orders', type: :request do
   let!(:administrator) { create(:administrator) }
@@ -15,7 +15,7 @@ RSpec.describe 'GET /administrator/orders', type: :request do
     end
 
     it 'is possible to access orders index' do
-      expect(response.body).to include('Administrator Panel').and include('<h2>Orders</h2>')
+      expect(response.body).to include('Ruby Lovers Admin Panel').and include('<h2>Orders</h2>')
     end
 
     it 'is displaying all orders' do
@@ -23,7 +23,9 @@ RSpec.describe 'GET /administrator/orders', type: :request do
     end
   end
 
-  it_behaves_like 'request for administrators only' do
+  it_behaves_like 'request restricted to administrators' do
     let(:path) { '/administrator/orders' }
   end
+
+
 end
