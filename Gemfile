@@ -19,6 +19,7 @@ gem 'webpacker', '~> 5.0'
 gem 'aws-sdk-s3', require: false
 gem 'dry-monads'
 gem 'pagy', '~> 3.0.0'
+gem 'aasm', '~> 5.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
