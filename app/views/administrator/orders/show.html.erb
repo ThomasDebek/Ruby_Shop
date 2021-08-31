@@ -8,7 +8,3 @@
   </div>
 </div>
 
-<% if @order.payment.pending? %>
-  <%= link_to "Complete", administrator_complete_payment_path, method: :patch, class: "btn btn-success" %>
-  <%= link_to "Fail", administrator_fail_payment_path, method: :patch, class: "btn btn-success" %>
-<% end %>
