@@ -23,4 +23,39 @@ RSpec.describe 'GET /orders/:id', type: :request do
   it_behaves_like 'request for administrators only' do
     let(:path) { "/administrator/orders/#{order.id}" }
   end
+
+
+  context 'when logged in as User' do
+    let!(:user) { create(:user) }
+
+    before do
+      login_as(user, scope: :user)
+      get "/administrator/orders/#{order.id}"
+    end
+
+    it 'redirects to root path' do
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'informs about lack of authorization' do
+      follow_redirect!
+      expect(response.body).to include('You are not authorized.')
+    end
+  end
+
+  context 'when not logged in' do
+    before do
+      get "/administrator/orders/#{order.id}"
+    end
+
+    it 'redirects to root path' do
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'informs about lack of authorization' do
+      follow_redirect!
+      expect(response.body).to include('You are not authorized.')
+    end
+  end
+
 end
