@@ -53,4 +53,5 @@ puts 'generating Orders'
 Order.destroy_all
 25.times do
   Order.create(state: rand(1..3), user: users[rand(4)])
+  Payment.create(order: Order.last)
 end
