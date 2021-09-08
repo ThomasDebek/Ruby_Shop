@@ -30,16 +30,15 @@ Category.destroy_all
   )
 end
 
-categories = Category.all
-brands = Brand.all
+
 
 Product.delete_all
 20.times do
   p = Product.create!(
     name: Faker::Commerce.unique.product_name,
     price: Faker::Number.decimal(l_digits: 2),
-    category: categories[rand(4)],
-    brand: brands[rand(4)]
+    category: Category.all.sample,
+    brand: Brand.all.sample
   )
   puts "generating - product - #{p.name}"
   downloaded_image = URI.open("https://source.unsplash.com/700x400/?#{p.name.split.last}")
@@ -47,11 +46,12 @@ Product.delete_all
 end
 
 
-users = User.all
+
 puts 'generating Orders'
 
 Order.destroy_all
 25.times do
-  Order.create(state: rand(1..3), user: users[rand(4)])
+  Order.create(state: rand(1..3), user: User.all.sample)
   Payment.create(order: Order.last)
+  rand(5).times {|x| OrderItem.create(order: Order.last, product: Product.all.sample)}
 end
