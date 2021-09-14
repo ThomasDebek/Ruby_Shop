@@ -23,9 +23,9 @@ RSpec.describe 'GET /administrator/orders', type: :request do
     end
   end
 
-  it_behaves_like 'request restricted to administrators' do
-    let(:path) { '/administrator/orders' }
-  end
+  #it_behaves_like 'request restricted to administrators' do
+  # let(:path) { '/administrator/orders' }
+  #end
 
 
 end
