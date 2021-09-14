@@ -20,6 +20,7 @@ gem 'aws-sdk-s3', require: false
 gem 'dry-monads'
 gem 'pagy', '~> 3.0.0'
 gem 'aasm', '~> 5.2'
+gem 'draper'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
