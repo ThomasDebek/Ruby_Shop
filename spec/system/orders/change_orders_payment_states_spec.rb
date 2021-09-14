@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'Changing Order\'s Payment state', type: :system do
   let!(:administrator) { create(:administrator) }
-  let!(:order) { create(:order) }
+
 
   context 'when logged in as administrator' do
     before do
       login_as(administrator, scope: :administrator)
+      create(:order)
       visit '/administrator'
       click_link 'Orders'
       click_link 'view'
